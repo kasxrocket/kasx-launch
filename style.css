@@ -1,16 +1,52 @@
-/* Basic styles for the KasX Web Interface */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  text-align: center;
+/* style.css */
+
+/* Basic Reset */
+* {
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
+/* Set background color and page styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
   color: #333;
+  text-align: center;
+  padding: 50px;
 }
 
-p {
-  font-size: 1.2em;
+/* Header styling */
+h1 {
+  font-size: 3em;
+  color: #ff9800;
+  margin-bottom: 20px;
 }
+
+/* Paragraph styling */
+p {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+}
+
+/* Button styling for a call-to-action */
+button {
+  padding: 15px 30px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #e68900;
+}
+
+/* Container for future content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
