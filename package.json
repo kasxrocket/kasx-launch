@@ -1,0 +1,15 @@
+{
+  "name": "kasx-launch",
+  "version": "1.0.0",
+  "description": "KasX project for swapping KRC20 tokens with a user-friendly web interface.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"No tests specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "author": "KasX Community",
+  "license": "CC BY-NC 4.0"
+}
