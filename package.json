@@ -8,8 +8,12 @@
     "test": "echo \"No tests specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "netlify-lambda": "^2.0.16",
+    "node-fetch": "^3.3.2"
   },
   "author": "KasX Community",
-  "license": "CC BY-NC 4.0"
+  "license": "CC BY-NC 4.0",
+  "keywords": []
 }

@@ -8,3 +8,6 @@ dist/
 # Ignore logs
 *.log
 logs/
+
+# Local Netlify folder
+.netlify
