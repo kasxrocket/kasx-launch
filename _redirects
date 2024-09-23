@@ -1,11 +1,11 @@
-# Redirect all requests to swap.kasx.io to /swap/index.html
-https://swap.kasx.io/*    /swap/index.html   200
+# Redirect all traffic from swap.kasx.io to the swap folder
+https://swap.kasx.io/*   /swap/:splat   200
 
-# Redirect all requests to krc20.kasx.io to /krc20/index.html
-https://krc20.kasx.io/*   /krc20/index.html   200
+# Redirect all traffic from krc20.kasx.io to the krc20 folder
+https://krc20.kasx.io/*   /krc20/:splat   200
 
-# Optional: Redirect www.swap.kasx.io to swap.kasx.io
-https://www.swap.kasx.io/*   https://swap.kasx.io/:splat  301!
+# Redirect www.swap.kasx.io to swap.kasx.io
+https://www.swap.kasx.io/*   https://swap.kasx.io/:splat   301!
 
 # Optional: Redirect www.krc20.kasx.io to krc20.kasx.io
-https://www.krc20.kasx.io/*   https://krc20.kasx.io/:splat  301!
+https://www.krc20.kasx.io/*   https://krc20.kasx.io/:splat   301!
