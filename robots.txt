@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /images/
+Disallow: /includes/scripts/
+Disallow: /ISSUE_TEMPLATE/
+Disallow: /krc20/
+Disallow: /netlify/
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /swap/scripts/
+Sitemap: https://www.kasx.io/sitemap.xml
