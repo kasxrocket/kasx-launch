@@ -1,0 +1,104 @@
+/* Style for Swap Interface with Darker Background */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.swap-interface {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+.swap-interface h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.swap-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.swap-box input[type="number"],
+.swap-box select {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.swap-button {
+    padding: 15px 0;
+    font-size: 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.swap-button:hover {
+    background-color: #0056b3;
+}
+
+/* Wallet Connect Button */
+.wallet-connect {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.wallet-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.wallet-btn:hover {
+    background-color: #218838;
+}
+
+/* Gas Fee Display */
+.gas-fee {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.gas-fee span {
+    font-weight: bold;
+}
+
+/* Search Function Styling */
+.search-container {
+    position: relative;
+}
+
+#token-search {
+    padding: 10px;
+    font-size: 1.2rem;
+    width: calc(100% - 22px);
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+    margin-bottom: 10px;
+}

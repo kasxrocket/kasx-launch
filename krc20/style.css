@@ -1,20 +1,261 @@
-/* Basic Styles for the Page */
+/* Base Styles */
+/* Dark mode (default) */
+:root {
+    --primary-color: #1f2937;
+    --secondary-color: #fff;
+    --background-color: #10141b;
+    --text-color: #fff;
+    --button-color: #ff9f43;
+}
+
+/* Light mode */
+[data-theme="light"] {
+    --primary-color: #fff;
+    --secondary-color: #1f2937;
+    --background-color: #f8f9fa;
+    --text-color: #1f2937;
+    --button-color: #007bff;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-header {
+h1, h2, h3 {
+    color: var(--text-color);
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-h1 {
-    font-size: 2.5em;
+p {
+    color: var(--text-color);
+    font-size: 1.1em;
+    text-align: center;
+    margin: 0 0 20px;
 }
+
+/* Sticky Header */
+header.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--primary-color);
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header container layout */
+header .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+/* Logo */
+header .logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Navigation Links */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    color: var(--button-color);
+    background-color: var(--primary-color);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Mint Now Button */
+.mint-now-header {
+    background-color: var(--button-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.mint-now-header:hover {
+    background-color: #ff7f0e;
+}
+
+/* Minting Banner */
+.minting-banner {
+    background-color: var(--button-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 20px; /* Adjusted the height as requested */
+}
+
+.minting-banner a {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.minting-banner a:hover {
+    color: #ff7f0e;
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/space-background.jpg') no-repeat center center/cover;
+    height: 80vh; /* Full screen height for the hero section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    color: var(--text-color);
+    z-index: 2;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: var(--text-color);
+    z-index: 2;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: var(--button-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff7f0e;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Media Query for Smaller Screens */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .mint-now-header {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .hero h1 {
+        font-size: 2em;
+    }
+    
+    .hero p {
+        font-size: 1em;
+    }
+}
+
+/* Dark/Light Mode Toggle - Slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--secondary-color);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--button-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/*Token styles */
 
 .token-list {
     margin: 0 auto;
@@ -39,45 +280,4 @@ h1 {
 
 .token:hover {
     transform: scale(1.05);
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-ul li:hover {
-    background-color: #e0f7fa;
-    transform: scale(1.02);
-}
-
-ul li a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-}
-
-ul li a:hover {
-    text-decoration: underline;
-    color: #0056b3;
-}
-
 }

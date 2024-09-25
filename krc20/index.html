@@ -3,30 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRC20 Tokens</title>
+    <meta name="description" content="KasX - A community-driven KRC20 token swap platform with light and dark mode options.">
+    <title>KasX - Swap KRC20 Tokens</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Minting Banner at the Top -->
+    <div class="minting-banner">
+        <p>Mint KASX Tokens Now! <a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank">Mint Now via KSPR Bot!</a></p>
+    </div>
 
-    <header>
-        <h1>KRC20 Tokens</h1>
-        <p>Explore all KRC20 tokens on the Kaspa network</p>
+    <!-- Sticky Header with Logo, Navigation, and Mint Now Button -->
+    <header class="sticky-header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/kasx-logo.png" alt="KasX Logo" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="swap/index.html">KasX Swap</a></li>
+                    <li><a href="krc20/index.html">KRC20 Tokens</a></li>
+                    <li><a href="https://github.com/kasxrocket/kasx-launch" target="_blank">GitHub</a></li>
+                    <li><a href="docs/whitepaper.pdf" target="_blank">White Paper</a></li>
+                    <li><a href="#socials">Socials</a></li>
+                    <li>
+                        <a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now</a>
+                    </li>
+                    <li>
+                        <!-- Toggle switch for Light/Dark mode -->
+                        <label class="switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section class="token-list">
+    <!-- Hero Section with spacey background -->
+    <section class="hero">
+        <div class="overlay"></div>
+        <h1>KasX - The Future of KRC20 Token Swapping</h1>
+                    <section class="token-list">
         <h2>Live KRC20 Tokens</h2>
         <div id="tokens">
             <!-- Token data will be dynamically loaded here -->
         </div>
     </section>
+        <a href="#swap" class="cta-button">Start Swapping Tokens</a>
+    </section>
 
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose KasX?</h2>
+        <div class="feature-grid">
+            <div class="feature">
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Swap Section -->
+    <section class="swap-section" id="swap">
+        <h2>Explore KasX Swap</h2>
+        <p>Start swapping your KRC20 tokens with our user-friendly interface.</p>
+        <a href="https://kasx.io/swap" class="cta-button">KasX Swap</a>
+    </section>
+
+    <!-- Social Links Section -->
+    <section class="socials" id="socials">
+        <h2>Join the KasX Community</h2>
+        <div class="social-icons">
+            <a href="https://twitter.com/kasx" target="_blank">Twitter</a>
+            <a href="https://discord.gg/kasx" target="_blank">Discord</a>
+            <a href="https://t.me/kasx" target="_blank">Telegram</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 KasX. Powered by Kaspa.</p>
+        <p>&copy; 2024 KasX. Powered by the Kaspa network.</p>
     </footer>
 
+   <!-- JavaScript for Dark Mode and other functionality -->
+    <script src="darkmode.js"></script>
     <script src="krc20-script.js"></script>
-
 </body>
 </html>
-
-

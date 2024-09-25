@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KasX - A community-driven KRC20 token swap platform">
+    <link rel="stylesheet" href="style.css">
+    <title>KasX</title>
+</head>
+<body>
+
+<!-- Sticky Header including Minting Banner -->
+<header class="sticky-header">
+    <div class="minting-progress-container">
+        <div class="minting-progress-bar" id="minting-bar">
+            <span class="minted-info">Minted: 2,239 / 7,777,777,777 (0.03%)</span>
+            <div class="progress-bar">
+                <div class="progress" style="width: 0.03%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <div class="logo">
+            <a href="https://kasx.io"><img src="images/kasx-logo.png" alt="KasX Logo" class="logo"></a>
+        </div>
+
+        <nav>
+            <ul class="desktop-menu">
+                <li><a href="https://kasx.io/swap/index.html">KasX Swap</a></li>
+                <li><a href="https://kas.fyi/krc20-tokens" target="_blank">KRC20 Tokens</a></li>
+                <li><a href="https://github.com/kasxrocket/kasx-launch" target="_blank">GitHub Project</a></li>
+                <li><a href="https://kasx.io/docs/whitepaper.pdf" target="_blank">White Paper</a></li>
+                <li class="dropdown">
+                    <a href="#community">Community</a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://discord.gg/kasx" target="_blank">Discord</a></li>
+                        <li><a href="https://t.me/kasx" target="_blank">Telegram</a></li>
+                        <li><a href="https://x.com/kasx_io" target="_blank">X</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now</a>
+                </li>
+                <li>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu-icon" onclick="toggleMobileMenu()">&#x22EE;</div>
+            <ul class="mobile-menu" id="mobile-menu">
+                <li><a href="swap/index.html">KasX Swap</a></li>
+                <li><a href="krc20/index.html">KRC20 Tokens</a></li>
+                <li><a href="https://github.com/kasxrocket/kasx-launch" target="_blank">GitHub Project</a></li>
+                <li><a href="docs/whitepaper.pdf" target="_blank">White Paper</a></li>
+                <li><a href="https://discord.gg/kasx" target="_blank">Discord</a></li>
+                <li><a href="https://t.me/kasx" target="_blank">Telegram</a></li>
+                <li><a href="https://x.com/kasx" target="_blank">X</a></li>
+                <li>
+                    <a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Dark Mode Script -->
+<script src="scripts/darkmode.js"></script>
+
+<script>
+    // Toggle Mobile Menu
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu.style.display === "block") {
+            mobileMenu.style.display = "none";
+        } else {
+            mobileMenu.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

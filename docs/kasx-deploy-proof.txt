@@ -1,0 +1,7 @@
+ KASX successfully deployed!
+
+🔹 Token Ticker: KASX
+🔹 Max Supply: 7777777777
+🔹 Limit per Mint: 42
+
+📄 Transaction ID: fe44d3a7508fb38618087bb4dc7a60b20997cc28d885e330c50d3fc73d48c618
