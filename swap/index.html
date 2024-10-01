@@ -9,21 +9,14 @@
     <link rel="stylesheet" href="swap-style.css">
 </head>
 <body>
-    <!-- Load Header -->
-    <div id="header-placeholder"></div>
-
-    <section class="features">
-      <h2>KRC20 Token Swap</h2>
-      <p class="subheading">***For further development and testing ONLY. USE AT YOUR OWN RISK!!!***</p>
-  </section>
-
     <!-- Swap Interface -->
     <section class="swap-interface">
         <div class="wallet-connect">
             <button class="wallet-btn" onclick="connectWallet()">Connect Wallet</button>
-            <p id="wallet-status"></p> <!-- Display wallet address here -->
+            <p id="wallet-status"></p> <!-- To display wallet connection status -->
         </div>
-        <h2>Token Swap</h2>
+
+        <!-- Other parts of the swap interface -->
         <div class="swap-box">
             <label for="token-amount">Enter amount:</label>
             <input type="number" id="token-amount" name="token-amount" placeholder="0.00">
@@ -31,114 +24,59 @@
             <label for="from-token">From Token:</label>
             <select id="from-token">
                 <option value="kaspa">Kaspa</option>
-                <!-- KRC20 tokens will be dynamically loaded here -->
+                <!-- Dynamically load KRC20 tokens here -->
             </select>
 
             <label for="to-token">To Token:</label>
-            <div class="search-container">
-                <input type="text" id="token-search" placeholder="Search for KRC20 token..." onkeyup="filterTokens()">
-                <select id="to-token">
-                    <option value="kaspa">Kaspa</option>
-                    <!-- KRC20 tokens will be dynamically loaded here -->
-                </select>
-            </div>
-            
+            <select id="to-token">
+                <option value="krc20">KRC20</option>
+                <!-- Dynamically load KRC20 tokens here -->
+            </select>
+
             <button class="swap-button" onclick="swapTokens()">Swap</button>
         </div>
-
-        <!-- Display current gas fee -->
-        <div class="gas-fee">
-            <p>Current Gas Fee Paid to KasX: <span id="gas-fee-amount">0.00</span> KASX</p>
-        </div>
     </section>
-
-    <!-- Invitation to Join Section -->
-    <div class="roadmap-invite">
-        <h3>Are you a Developer? Join the KasX Journey!</h3>
-        <p>We invite community members and developers to contribute to the project by designing, building, or minting KASX tokens. Be part of the decentralized future with us!</p>
-        <div class="invite-buttons">
-            <a href="https://github.com/kasxrocket/kasx-launch" class="btn">GitHub Developers</a>
-            <a href="https://t.me/kspr_home_bot?start=WdRcvw" class="btn">Mint Using KSPR Bot!</a>
-        </div>
-    </div>
-
-    <!-- Load Footer -->
-    <div id="footer-placeholder"></div>
-
-    <!-- Include JS for loading header and footer -->
-    <script src="scripts/load-header-footer.js"></script>
 
     <!-- Include WalletConnect and Web3.js -->
     <script src="https://unpkg.com/@walletconnect/client@1.6.6/dist/walletconnect.min.js"></script>
     <script src="https://unpkg.com/web3@1.3.6/dist/web3.min.js"></script>
 
-    <!-- JavaScript for WalletConnect and Swap Functionality -->
     <script>
         let provider;
         let web3;
 
-        // Initialize WalletConnect provider
-        function connectWallet() {
-            provider = new WalletConnectProvider.default({
-                infuraId: "YOUR_INFURA_PROJECT_ID" // Replace with your Infura project ID
-            });
+        async function connectWallet() {
+            try {
+                provider = new WalletConnectProvider.default({
+                    rpc: {
+                        1111: "https://kaspa.nownodes.io/?api_key=YOUR_NOW_NODES_API_KEY"
+                    },
+                    chainId: 1111  // Placeholder Chain ID for Kaspa
+                });
 
-            // Enable WalletConnect session (triggers QR Code modal)
-            provider.enable().then(() => {
+                await provider.enable();
                 web3 = new Web3(provider);
-                web3.eth.getAccounts().then((accounts) => {
-                    const walletStatus = document.getElementById('wallet-status');
-                    walletStatus.textContent = `Connected: ${accounts[0]}`;
-                }).catch(err => console.error(err));
-            }).catch(err => console.error(err));
+
+                const accounts = await web3.eth.getAccounts();
+                document.getElementById('wallet-status').textContent = `Connected: ${accounts[0]}`;
+            } catch (error) {
+                console.error("Error connecting wallet:", error);
+                alert("Failed to connect wallet.");
+            }
         }
 
         function swapTokens() {
             const amount = document.getElementById('token-amount').value;
             const fromToken = document.getElementById('from-token').value;
             const toToken = document.getElementById('to-token').value;
-            
+
             if (amount && fromToken && toToken) {
                 alert(`Swapping ${amount} ${fromToken} to ${toToken}`);
-                // Additional Web3 token swap logic will be added here
+                // Placeholder for Web3.js logic to interact with smart contracts
             } else {
                 alert('Please fill in all fields.');
             }
         }
-
-        // Fetch and load KRC20 tokens from kas.fyi
-        async function loadKRC20Tokens() {
-            const response = await fetch('https://kas.fyi/krc20-tokens');
-            const tokens = await response.json();
-            
-            const fromTokenSelect = document.getElementById('from-token');
-            const toTokenSelect = document.getElementById('to-token');
-            
-            tokens.forEach(token => {
-                const option = document.createElement('option');
-                option.value = token.symbol;
-                option.textContent = `${token.name} (${token.symbol})`;
-                fromTokenSelect.appendChild(option.cloneNode(true)); // Add to both from and to select
-                toTokenSelect.appendChild(option);
-            });
-        }
-
-        // Filter tokens based on search input
-        function filterTokens() {
-            const searchInput = document.getElementById('token-search').value.toLowerCase();
-            const options = document.getElementById('to-token').options;
-            
-            for (let i = 0; i < options.length; i++) {
-                const optionText = options[i].text.toLowerCase();
-                options[i].style.display = optionText.includes(searchInput) ? '' : 'none';
-            }
-        }
-
-        // Fetch gas fee (placeholder)
-        document.getElementById('gas-fee-amount').textContent = '0.01'; // Example fee
-
-        // Load KRC20 tokens on page load
-        loadKRC20Tokens();
     </script>
 </body>
 </html>
