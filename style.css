@@ -18,15 +18,6 @@
     --button-color: #ff9f43;
 }
 
-/* Light mode */
-[data-theme="light"] {
-    --primary-color: #fff;
-    --secondary-color: #1f2937;
-    --background-color: #f8f9fa;
-    --text-color: #1f2937;
-    --button-color: #007bff;
-}
-
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -116,6 +107,7 @@ nav ul li a:hover {
 
 .mint-now-header:hover {
     background-color: #ff7f0e;
+    color: var(--primary-color);
 }
 
 /* Minting Banner */
@@ -142,7 +134,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-    background: url('images/space-background.jpg') no-repeat center center/cover;
+    background: url('images/geometric-background.jpg') no-repeat center center/cover;
     height: 80vh; /* Full screen height for the hero section */
     display: flex;
     justify-content: center;
@@ -331,7 +323,64 @@ input:checked + .slider:before {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+/* Update the grid for a fixed width */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-gap: 20px; /* Space between the grid items */
+    justify-items: center; /* Center the items */
+}
 
+/* Set a fixed width for each feature box */
+.feature {
+    width: 300px; /* Fixed width */
+    text-align: center; /* Optional: Center the content inside */
+}
+/* Grid layout */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+/* Set fixed width and height for the feature boxes */
+.feature {
+    width: 300px;
+    height: 320px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Ensure images are centered */
+.feature img {
+    max-width: 100px; /* Adjust as necessary */
+    margin-bottom: 0px; /* Add some space below the image */
+}
+/* Adjust icon-circle to ensure it's fully circular and the image fits */
+.icon-circle {
+    width: 120px; /* Adjust the size of the circle */
+    height: 120px; /* Ensure the circle is tall enough */
+    background-color: #fff; /* Background color of the circle */
+    border-radius: 50%; /* Create the circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px; /* Center and add space below */
+    overflow: hidden; /* Hide any overflow from the image */
+}
+
+/* Ensure the image fits inside the circle */
+.feature-icon {
+    width: 100%; /* Ensure the image fills the circle width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Fit the image perfectly in the circle */
+}
 /* Icon Circle Style */
 .icon-circle {
     width: 80px;
@@ -347,7 +396,7 @@ input:checked + .slider:before {
 .feature-icon {
     width: 120px; /* Adjust as needed */
     height: 120px;
-	    border-radius: 50%;
+	    border-radius: 60%;
 
     object-fit: contain; /* Ensure the icon fits nicely inside the circle */
 }
@@ -457,7 +506,7 @@ input:checked + .slider:before {
 
 .minting-progress-bar .progress-bar {
     height: 8px;
-    background-color: #333;
+    background-color: #0a0c10;
 }
 
 .minting-progress-bar .progress {
@@ -507,7 +556,7 @@ input:checked + .slider:before {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #1f2937;
+    background-color: #0a0c10;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -533,19 +582,11 @@ input:checked + .slider:before {
 }
 /* Base Styles */
 :root {
-    --primary-color: #1f2937;
+    --primary-color: #0a0c10;
     --secondary-color: #fff;
     --background-color: #10141b;
     --text-color: #fff;
     --button-color: #ff9f43;
-}
-
-[data-theme="light"] {
-    --primary-color: #fff;
-    --secondary-color: #1f2937;
-    --background-color: #f8f9fa;
-    --text-color: #1f2937;
-    --button-color: #007bff;
 }
 
 /* Roadmap Section */
@@ -657,7 +698,7 @@ input:checked + .slider:before {
 .token-swap {
     text-align: center;
     padding: 40px 20px;
-    background-color: #f8f9fa; /* light background for contrast */
+    background-color: #0a0c10; /* light background for contrast */
     border-radius: 10px;
     margin: 40px auto;
     max-width: 600px;
@@ -720,7 +761,7 @@ input:checked + .slider:before {
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #292826;
     color: #333;
 }
 
@@ -779,4 +820,64 @@ p {
     .container {
         width: 95%;
     }
+}
+/* Center the entire form */
+#mc_embed_signup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Ensure the form items are aligned in one line */
+#mc_embed_signup form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Adjust the email input field */
+#mc_embed_signup input[type="email"] {
+    width: 300px; /* Adjust width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style and fix the subscribe button size */
+#mc_embed_signup .button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: auto; /* Ensure full height */
+}
+
+#mc_embed_signup .button:hover {
+    background-color: #555;
+}
+.token-info {
+    background-color: #292826;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto; /* Center the section */
+    text-align: center;
+    width: 600px; /* Set a fixed width */
+}
+
+.token-info ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.token-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.token-info a:hover {
+    text-decoration: underline;
 }
