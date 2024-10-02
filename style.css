@@ -835,6 +835,12 @@ p {
     align-items: center;
     gap: 10px;
 }
+#mc_embed_signup .response {
+    display: block;
+    margin-top: 10px;
+    color: #000;
+    font-weight: bold;
+}
 
 /* Adjust the email input field */
 #mc_embed_signup input[type="email"] {
