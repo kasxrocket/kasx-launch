@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KasX Hub - Your one-stop for KRC20 functions like balance checking, minting, transferring, and more.">
+    <meta name="keywords" content="KasX Hub, KRC20, Token Minting, Token Transfer, Kaspa, KSPR Bot">
+    <title>KasX Hub</title>
+    <link rel="stylesheet" href="hub-style.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- Header placeholder -->
+<div id="header-placeholder"></div>
+
+<!-- Main Section for KasX Hub -->
+<section class="hub-container">
+    <h1>KasX Hub</h1>
+    <p>Welcome to KasX Hub! Explore a variety of KRC20 token functions similar to KSPR Bot:</p>
+
+    <!-- Section for each function -->
+    <div class="hub-functions">
+        <!-- Balance Check -->
+        <div class="function-box">
+            <h2>Check Balance</h2>
+            <form id="balance-form">
+                <label for="wallet-address">Enter Wallet Address:</label>
+                <input type="text" id="wallet-address" placeholder="Your Kaspa Wallet Address" required>
+                <button type="submit">Check Balance</button>
+            </form>
+            <div id="balance-result"></div>
+        </div>
+
+        <!-- Mint Tokens -->
+        <div class="function-box">
+            <h2>Mint KRC20 Tokens</h2>
+            <form id="mint-form">
+                <label for="mint-token">Token Name:</label>
+                <input type="text" id="mint-token" placeholder="Enter Token Name" required>
+                <label for="mint-amount">Amount to Mint:</label>
+                <input type="number" id="mint-amount" placeholder="0" required>
+                <button type="submit">Mint Tokens</button>
+            </form>
+            <div id="mint-result"></div>
+        </div>
+
+        <!-- Deploy Token -->
+        <div class="function-box">
+            <h2>Deploy KRC20 Token</h2>
+            <form id="deploy-form">
+                <label for="deploy-name">Token Name:</label>
+                <input type="text" id="deploy-name" placeholder="New Token Name" required>
+                <label for="max-supply">Max Supply:</label>
+                <input type="number" id="max-supply" placeholder="Enter Max Supply" required>
+                <button type="submit">Deploy Token</button>
+            </form>
+            <div id="deploy-result"></div>
+        </div>
+
+        <!-- Transfer Tokens -->
+        <div class="function-box">
+            <h2>Transfer KRC20 Tokens</h2>
+            <form id="transfer-form">
+                <label for="transfer-token">Token Name:</label>
+                <input type="text" id="transfer-token" placeholder="Enter Token Name" required>
+                <label for="transfer-to">Recipient Address:</label>
+                <input type="text" id="transfer-to" placeholder="Recipient Wallet Address" required>
+                <label for="transfer-amount">Amount:</label>
+                <input type="number" id="transfer-amount" placeholder="0" required>
+                <button type="submit">Transfer Tokens</button>
+            </form>
+            <div id="transfer-result"></div>
+        </div>
+
+        <!-- Send KAS -->
+        <div class="function-box">
+            <h2>Send KAS</h2>
+            <form id="send-form">
+                <label for="kas-to">Recipient Address:</label>
+                <input type="text" id="kas-to" placeholder="Recipient Wallet Address" required>
+                <label for="kas-amount">Amount:</label>
+                <input type="number" id="kas-amount" placeholder="0" required>
+                <button type="submit">Send KAS</button>
+            </form>
+            <div id="send-result"></div>
+        </div>
+
+        <!-- Trending Tokens -->
+        <div class="function-box">
+            <h2>Trending Tokens</h2>
+            <button id="trending-tokens-btn">Show Trending Tokens</button>
+            <div id="trending-tokens-result"></div>
+        </div>
+
+        <!-- Marketplace -->
+        <div class="function-box">
+            <h2>Marketplace</h2>
+            <p>Coming Soon</p>
+        </div>
+
+        <!-- Referral Link -->
+        <div class="function-box">
+            <h2>Referral Link</h2>
+            <button id="referral-btn">Get Referral Link</button>
+            <div id="referral-result"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Placeholder for footer -->
+<div id="footer-placeholder"></div>
+
+<!-- JavaScript to handle form submissions -->
+<script src="hub-scripts.js"></script>
+
+    <!-- Include the external JavaScript file -->
+    <script src="scripts/load-header-footer.js"></script>
+</body>
+</html>
