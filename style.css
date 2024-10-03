@@ -62,10 +62,13 @@ header .nav-container {
 
 /* Logo */
 header .logo img {
-    width: 120px;
-    height: 120px;
     object-fit: cover;
     border-radius: 50%;
+    border: 0px solid #fbe292; /* Light-colored border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    width: 120px; /* Adjust as necessary for size */
+    height: 120px; /* Ensure the height matches the width for the circle */
+    object-fit: cover; /* Ensure the image fits well within the circle */
 }
 
 /* Navigation Links */

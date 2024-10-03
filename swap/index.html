@@ -5,37 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="KasX Token Swap - Seamlessly swap KRC20 and Kaspa tokens.">
     <title>KasX - Token Swap</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="swap-style.css">
 </head>
 <body>
-    <!-- Swap Interface -->
-    <section class="swap-interface">
-        <div class="wallet-connect">
-            <button class="wallet-btn" onclick="connectWallet()">Connect Wallet</button>
-            <p id="wallet-status"></p> <!-- To display wallet connection status -->
+    <!-- Placeholder for header -->
+    <div id="header-placeholder"></div>
+<!-- Wallet Connect Button -->
+<div class="wallet-connect">
+    <button class="wallet-btn" onclick="openWalletPopup()">Connect Wallet</button>
+</div>
+
+<!-- Wallet Connect Modal -->
+<div id="walletPopup" class="wallet-popup">
+    <div class="wallet-popup-content">
+        <span class="close-btn" onclick="closeWalletPopup()">&times;</span>
+        <h2>Connect Wallet</h2>
+        <div class="wallet-options">
+            <!-- Kasware Wallet Option -->
+            <div class="wallet-option" onclick="connectKaswareWallet()">
+                <img src="images/wallet-connect-kasware.png" alt="Kasware Wallet" class="wallet-icon">
+                <p>Kasware Wallet - beta</p>
+            </div>
+               <!-- Tangem Wallet Option -->
+               <div class="wallet-option" onclick="connecttangemWallet()">
+                <img src="images/wallet-connect-tangem.png" alt="tangem Wallet" class="wallet-icon">
+                <p>Tangem Wallet - soon</p>
+            </div>
+            <!-- Add more wallet options here as needed -->
         </div>
+    </div>
+</div>
 
-        <!-- Other parts of the swap interface -->
-        <div class="swap-box">
-            <label for="token-amount">Enter amount:</label>
-            <input type="number" id="token-amount" name="token-amount" placeholder="0.00">
 
-            <label for="from-token">From Token:</label>
-            <select id="from-token">
-                <option value="kaspa">Kaspa</option>
-                <!-- Dynamically load KRC20 tokens here -->
-            </select>
+<!-- Other parts of the swap interface -->
+<div class="swap-box">
+    <label for="token-amount">Enter amount:</label>
+    <input type="number" id="token-amount" name="token-amount" placeholder="0.00">
+    
+    <label for="from-token">From Token:</label>
+    <div class="autocomplete">
+        <input id="token-input-1" type="text" placeholder="Search for token...">
+        <div id="dropdown-1" class="dropdown-content"></div>
+    </div>
 
-            <label for="to-token">To Token:</label>
-            <select id="to-token">
-                <option value="krc20">KRC20</option>
-                <!-- Dynamically load KRC20 tokens here -->
-            </select>
-
-            <button class="swap-button" onclick="swapTokens()">Swap</button>
-        </div>
-    </section>
+    <label for="to-token">To Token:</label>
+    <div class="autocomplete">
+        <input id="token-input-2" type="text" placeholder="Search for a token...">
+        <div id="dropdown-2" class="dropdown-content"></div>
+    </div>
+    <!-- Swap button -->
+    <button class="swap-button" onclick="swapTokens()">Swap</button>
+    <section><div><p>Gas Fee: 0.42 KASX - Paid to KasX Community</p>
+        <p></p>
+        <p>Beta Version 1.0.0</p>
+    </div></section>
+    <!-- Logo for swap -->
+    <img src="images/kasx-swap-logo.png" alt="KasX Swap Logo" class="swap-logo">
+</div>
 
     <!-- Include WalletConnect and Web3.js -->
     <script src="https://unpkg.com/@walletconnect/client@1.6.6/dist/walletconnect.min.js"></script>
@@ -78,5 +105,84 @@
             }
         }
     </script>
+    <!-- Include the external JavaScript file -->
+<script src="scripts/load-header-footer.js"></script>
+
+<!-- Wallet Connect Popup and Logic -->
+<script>
+    // Open the wallet popup
+    function openWalletPopup() {
+        document.getElementById('walletPopup').style.display = 'block';
+    }
+
+    // Close the wallet popup
+    function closeWalletPopup() {
+        document.getElementById('walletPopup').style.display = 'none';
+    }
+
+    // Connect to Kasware Wallet (placeholder function)
+    function connectKaswareWallet() {
+        // Example function - Replace with actual Kasware wallet connect logic
+        alert('Connecting to Kasware Wallet...');
+        closeWalletPopup();  // Close the popup after selecting wallet
+        // Add actual Kasware API integration here.
+    }
+</script>
+<script>
+    const tokenNames = [
+  "KASX", "NACHO", "PEPE", "GHOAD", "KASPER", "KASPY", "NOCHA", "KASREG", "RUSTEE", "KONAN", 
+  "SILVER", "KPAW", "KASBOT", "KOOPA", "KASAYA", "BBYNAC", "POPKAT", "KARTEL", "SOMPS", 
+  "PANTY", "SHAY", "DOGI", "KASBTC", "KEKE", "KREP", "YONNY", "KASKRC", "FUND", "JKAS", 
+  "WBLF", "KARO", "KASHIN", "KLINKY", "KAKA", "TRUMP", "PIRATE", "TERM", "HERPES", 
+  "HOODIE", "SHADOW", "DALMA", "KCATS", "KGODS", "NICHA", "IDIOT", "PARROT", "MIGHTY", 
+  "GRINCH", "NWIF", "KASIA", "CUSD", "YORAN", "RIOT", "KEPE", "PCHITA", "SATO", "JUMP",
+  "BIDKEE", "KASDAG", "GENIE", "MANO", "LMFAO", "DONG", "MOODEN", "MUTE", "POLICE", 
+  "RAMBO", "ACES", "LPYONN", "LPNOCH", "LPKSPY", "LPKPER", "LPNACH", "BBYKAS", "KHLOE", 
+  "KRCXX", "KILL", "FRODO", "KACORE", "KURT", "SUKUK", "MINION", "KSPI", "PIKAS", 
+  "KAZPA", "CHNG", "PENNY", "KNFT", "PEPU", "BENJY", "CASHPA", "HYDRO", "KARL", "URUK", 
+  "KASGUL", "RING", "MOSSAD", "NOCHI", "NRGTRD", "WARE", "POPEYE", // (Include all tokens here)
+];
+
+// Function to handle search for a given input and dropdown
+function setupSearchBox(inputId, dropdownId) {
+  document.getElementById(inputId).addEventListener('input', function() {
+    const input = this.value.toUpperCase();
+    const dropdown = document.getElementById(dropdownId);
+
+    dropdown.innerHTML = ''; // Clear current options
+
+    if (input.length > 0) {
+      const filteredTokens = tokenNames.filter(token => token.includes(input));
+      
+      if (filteredTokens.length > 0) {
+        filteredTokens.forEach(token => {
+          const link = document.createElement('a');
+          link.href = '#';
+          link.textContent = token;
+          link.onclick = function() {
+            document.getElementById(inputId).value = token;
+            dropdown.style.display = 'none'; // Hide dropdown after selection
+          };
+          dropdown.appendChild(link);
+        });
+        dropdown.style.display = 'block'; // Show dropdown
+      } else {
+        dropdown.style.display = 'none'; // Hide dropdown if no matches
+      }
+    } else {
+      dropdown.style.display = 'none'; // Hide dropdown if input is empty
+    }
+  });
+}
+
+// Set up both search boxes
+setupSearchBox('token-input-1', 'dropdown-1');
+setupSearchBox('token-input-2', 'dropdown-2');
+
+</script>
+    <!-- Placeholder for footer -->
+    <div id="footer-placeholder"></div>
+        <!-- Include the external JavaScript file -->
+        <script src="scripts/load-header-footer.js"></script>
 </body>
 </html>
