@@ -1,1 +1,70 @@
-!!!WTF 404 WTF!!!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Error - Page Not Found</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .error-container h1 {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        .error-container p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .error-container .home-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .error-container .home-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .funny-line {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <img src="images/404-illustration.png" alt="404 illustration">
+        <h1>Uh oh! You’re lost in cyberspace!</h1>
+        <p>It looks like the page you're looking for has disappeared into the void.</p>
+        <p class="funny-line">Don’t worry though, you’ve got a cute robot trying to help you find your way back!</p>
+        <button class="home-btn" onclick="window.location.href='/';">Go Home</button>
+    </div>
+
+</body>
+</html>
