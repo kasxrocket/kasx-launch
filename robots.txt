@@ -4,8 +4,15 @@ Disallow: /images/
 Disallow: /includes/scripts/
 Disallow: /ISSUE_TEMPLATE/
 Disallow: /krc20/
+Disallow: /krc20/scripts/
+Disallow: /krc20/images/
 Disallow: /netlify/
 Disallow: /node_modules/
 Disallow: /scripts/
+Disallow: /swap/
 Disallow: /swap/scripts/
+Disallow: /swap/images/
+Disallow: /hub/
+Disallow: /swap/scripts/
+Disallow: /swap/images/
 Sitemap: https://www.kasx.io/sitemap.xml
