@@ -510,40 +510,63 @@ input:checked + .slider:before {
     background-color: #4caf50;
 }
 
-/* Mobile Menu Icon */
-.mobile-menu-icon {
-    display: none;
-    cursor: pointer;
-    font-size: 28px;
-    color: #fff;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-
+/* Mobile Menu */
 .mobile-menu {
     display: none;
+    flex-direction: column;
     list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #1f2937;
+    background-color: var(--primary-color);
+    padding: 10px;
     position: absolute;
-    top: 50px;
-    right: 0;
+    top: 60px;
+    right: 20px;
     width: 200px;
+    border-radius: 5px;
 }
 
 .mobile-menu li {
-    border-bottom: 1px solid #ccc;
+    margin: 10px 0;
 }
 
 .mobile-menu li a {
-    display: block;
-    padding: 10px;
-    color: #fff;
+    color: var(--secondary-color);
     text-decoration: none;
+    padding: 10px;
+    display: block;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    text-align: center;
 }
 
+.mobile-menu li a:hover {
+    background-color: var(--button-color);
+}
+
+/* Hamburger Icon */
+.mobile-menu-icon {
+    display: none;
+    font-size: 30px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+    }
+}
 /* Dropdown Menu Styling for Desktop */
 .dropdown {
     position: relative;
