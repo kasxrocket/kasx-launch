@@ -64,7 +64,7 @@ header .nav-container {
 header .logo img {
     object-fit: cover;
     border-radius: 50%;
-    border: 0px solid #fbe292; /* Light-colored border */
+    border: 3px solid #59e4e3; /* Light-colored border */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
     width: 120px; /* Adjust as necessary for size */
     height: 120px; /* Ensure the height matches the width for the circle */
