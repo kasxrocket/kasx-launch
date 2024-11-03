@@ -63,9 +63,9 @@ header .nav-container {
 /* Logo */
 header .logo img {
     object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #59e4e3; /* Light-colored border */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    border-radius: 33%;
+    border: 3px solid #6fc8bb; /* Light-colored border */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
     width: 64px; /* Adjust as necessary for size */
     height: 64px; /* Ensure the height matches the width for the circle */
     object-fit: cover; /* Ensure the image fits well within the circle */
@@ -111,7 +111,7 @@ nav ul li a:hover {
 }
 
 .mint-now-header:hover {
-    background-color: #007bff;
+    background-color: #6fc8bb;
     color: var(--primary-color);
 }
 
@@ -490,7 +490,7 @@ input:checked + .slider:before {
 /* Progress bar adjustments */
 .minting-progress-container {
     width: 100%;
-    background-color: #007bff;
+    background-color: #151521;
     padding: 5px 0;
     text-align: center;
 }
@@ -598,14 +598,6 @@ input:checked + .slider:before {
     .mobile-menu-icon {
         display: block;
     }
-}
-/* Base Styles */
-:root {
-    --primary-color: #0a0c10;
-    --secondary-color: #fff;
-    --background-color: #10141b;
-    --text-color: #fff;
-    --button-color: #ff9f43;
 }
 
 /* Roadmap Section */
@@ -941,6 +933,7 @@ p {
     border-radius: 5px;
     font-size: 
 }
+
 /* Wallet Connect Button */
 .wallet-connect {
     text-align: right;
@@ -1131,3 +1124,45 @@ input[type="number"]::-webkit-outer-spin-button:hover {
   .dropdown-content a:hover {
     background-color: #ddd;
   }
+
+/*Styles for Hottest Token Mints!*/
+.hot-mints-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      padding: 20px;
+    }
+    .token-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .token-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+    .button {
+      padding: 10px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .mint-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .trade-button {
+      background-color: #2196F3;
+      color: white;
+    }

@@ -2,7 +2,7 @@
 <header class="sticky-header">
     <div class="nav-container">
         <div class="logo">
-            <a href="https://kasx.io"><img src="images/favicon/kasx-favicon-final.png" alt="KasX Logo" class="logo"></a>
+            <a href="https://kasx.io"><img src="images/favicon/kasx-logo.png" alt="KasX Logo" class="logo"></a>
         </div>
         <nav>
             <ul class="desktop-menu">
@@ -29,24 +29,49 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#community">Community</a>
+                    <a href="https://x.com/kasx_io" target="_blank">Community</a>
                     <ul class="dropdown-content">
-                        <li><a href="https://discord.gg/zHnYqfdB" target="_blank">Discord</a></li>
                         <li><a href="https://t.me/kasx_io" target="_blank">Telegram</a></li>
                         <li><a href="https://x.com/kasx_io" target="_blank">X</a></li>
+                        <li><a href="https://discord.gg/zHnYqfdB" target="_blank">Discord</a></li>
                     </ul>
                 </li>
             </ul>
             </nav>
             <div class="fee-container">
-                <i class='fas fa-gas-pump' style='font-size:36px'></i><p id="fee-display">Loading...</p>
+                <p id="fee-display"><span style='font-size:20px;'>&#128722;</span> 0.042<img src="images/kaspa-icon-32x32.png" alt="𐤊AS"></p>
               </div>
+<!-- Wallet Connect Button -->
+<div class="wallet-connect">
+    <button class="wallet-btn" onclick="openWalletPopup()">Connect Wallet</button>
+</div>
+
+<!-- Wallet Connect Modal -->
+<div id="walletPopup" class="wallet-popup">
+    <div class="wallet-popup-content">
+        <span class="close-btn" onclick="closeWalletPopup()">&times;</span>
+        <h2>Connect Wallet</h2>
+        <div class="wallet-options">
+            <!-- Kasware Wallet Option -->
+            <div class="wallet-option" onclick="connectKaswareWallet()">
+                <img src="images/wallet-connect-kasware.png" alt="Kasware Wallet" class="wallet-icon">
+                <p>Kasware Wallet - beta</p>
+            </div>
+               <!-- Tangem Wallet Option -->
+               <div class="wallet-option" onclick="connecttangemWallet()">
+                <img src="images/wallet-connect-tangem.png" alt="tangem Wallet" class="wallet-icon">
+                <p>Tangem Wallet - soon</p>
+            </div>
+            <!-- Add more wallet options here as needed -->
+        </div>
+    </div>
+</div>
             </div>
     <!-- Placeholder for header -->
     <div id="header-placeholder"></div>
     <div class="minting-progress-container">
         <div class="minting-progress-bar" id="minting-bar">
-            <span class="minted-info"><span> KASX Mints = 4084<img src="images/kaspa-icon-32x32.png" alt="KAS"><a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now</a></span>
+            <span class="minted-info"><span> KASX Mints = 4286<img src="images/kaspa-icon-32x32.png" alt="KAS"><a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now &#9935;</a></span>
             </span>
             <div class="progress-bar">
                 <div class="progress" style="width: 2%;"></div>
