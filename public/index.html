@@ -7,22 +7,43 @@
     <meta name="keywords" content="KasX, KRC20 tokens, token swap, decentralized finance, Kaspa network, open-source, crypto swap, Kaspa blockchain">
     <title>KasX - Seamless KRC20 Token Swapping on Kaspa Network</title>
     <link rel="stylesheet" href="style.css">
-
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<link rel="icon" type="image/x-icon" href="favicon.ico"/>
-
-    <!-- Mailchimp CSS for Embedded Form -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-</head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <body>
 
     <!-- Placeholder for header -->
     <div id="header-placeholder"></div>
 
+    <!-- Wallet Connect Button -->
+<div class="wallet-connect">
+    <button class="wallet-btn" onclick="openWalletPopup()">Connect Wallet</button>
+</div>
+
+<!-- Wallet Connect Modal -->
+<div id="walletPopup" class="wallet-popup">
+    <div class="wallet-popup-content">
+        <span class="close-btn" onclick="closeWalletPopup()">&times;</span>
+        <h2>Connect Wallet</h2>
+        <div class="wallet-options">
+            <!-- Kasware Wallet Option -->
+            <div class="wallet-option" onclick="connectKaswareWallet()">
+                <img src="images/wallet-connect-kasware.png" alt="Kasware Wallet" class="wallet-icon">
+                <p>Kasware Wallet - beta</p>
+            </div>
+               <!-- Tangem Wallet Option -->
+               <div class="wallet-option" onclick="connecttangemWallet()">
+                <img src="images/wallet-connect-tangem.png" alt="tangem Wallet" class="wallet-icon">
+                <p>Tangem Wallet - soon</p>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- Hero Section with geometric spacey background -->
     <section class="hero">
         <div class="overlay"></div>
-        <h1>KasX - Seamless KRC20 Token Swapping on the Kaspa Network</h1>
+        <h1>Seamless KRC20 Token Swapping on the Kaspa Network</h1>
         <p>Join KasX, a community-driven and fair-launched platform, to swap KRC20 tokens on Kaspa’s lightning-fast and scalable blockchain network.</p>
         <a href="#swap" class="cta-button">Start Swapping Tokens</a>
     </section>
@@ -30,7 +51,7 @@
     <!-- Why Choose KasX Section -->
     <section class="features">
         <h2>Why Choose KasX?</h2>
-        <p class="subheading">KasX provides real-world use and value with seamless KRC20 token swaps. Not just another meme token, KasX empowers the decentralized future.</p>
+        <p class="subheading">KasX provides real-world use and value with seamless KRC20 token swaps. KasX empowers the decentralized future.</p>
         <div class="feature-grid">
             <div class="feature">
                 <img src="images/community-icon.png" alt="KasX is a community-driven platform with fair-launch and no pre-allocation" class="feature-icon">
@@ -84,20 +105,14 @@
                     <li><img src="images/tick-icon.png" alt="tick"> Community Socials Created (Discord, Twitter & X)</li>
                     <li><img src="images/rocket-icon.png" alt="rocket"> Invite Community Members to Help Design & Build</li>
                     <li><img src="images/rocket-icon.png" alt="rocket"> Beta Testing of KasX Swap for KRC20 Tokens</li>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> All KASX Tokens Minted</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> CEX Listing/s</li>
                 </ul>
             </div>
             <div>
                 <h3>Q1 2025</h3>
                 <ul>
                     <li><img src="images/rocket-icon.png" alt="rocket"> Development of Mobile App for Android</li>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> CEX Listing/s</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Q2 2025</h3>
-                <ul>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> To Be Confirmed (TBC)</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> More CEX Listing/s</li>
                 </ul>
             </div>
         </div>
@@ -110,54 +125,34 @@
         <a href="https://t.me/kspr_home_bot?start=WdRcvw" class="btn">Mint Using KSPR Bot!</a>
     </div>
 
-    <!-- Mailchimp Beta Tester Email Signup Form -->
-    <div id="mc_embed_signup">
-        <form action="https://kasx.us22.list-manage.com/subscribe/post?u=820a5c906219e6661a6b5db00&amp;id=81513a5162&amp;f_id=00f7d8e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-            <label for="mce-EMAIL">Email Address:</label>
-            <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Your email" required>
-            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-            <div id="mce-error-response" style="display: none;"></div>
-            <div id="mce-success-response" style="display: none;"></div>
-        </form>
-    </div>
-</div>
-    <!-- Token Swap Section -->
-    <section class="token-swap" id="swap">
-        <h2>Explore KasX Swap</h2>
-        <p class="subtext">Easily swap your KRC20 tokens using our intuitive interface. KasX makes swapping simple for all users.</p>
-        <p class="coming-soon">Coming Soon: Early Beta Testing Only</p>
-        <p><img src="images/kasx-beta-testing-screenshot1.png" alt="kasx-beta-testing-screenshot" style="width: 50%;"></p>
-        <p><img src="images/kasx-beta-testing-screenshot2.png" alt="kasx-beta-testing-screenshot" style="width: 50%;"></p>
-        <a href="#swap" class="cta-button">KasX Swap</a>
-    </section>
-    <section class="token-info">
-        <h2>🎉 KASX Successfully Deployed!</h2>
-        <ul>
-            <li>🔹 <strong>Token Ticker:</strong> KASX</li>
-            <li>🔹 <strong>Max Supply:</strong> 7,777,777,777</li>
-            <li>🔹 <strong>Limit per Mint:</strong> 42</li>
-        </ul>
-        <li>📄<strong>Transaction ID:</strong> <a href="https://explorer.kaspa.org/txs/fe44d3a7508fb38618087bb4dc7a60b20997cc28d885e330c50d3fc73d48c618" target="_blank">fe44d3a7508fb38618087bb4dc7a60b20997cc28d885e330c50d3fc73d48c618</a></li>
-        <li>📜<strong>KasX Funding Wallet Address:</strong> <a href="https://kas.fyi/address/kaspa:qzhz367wzfrvcaqr75acqd0ya3kgpvpgx4r6dkrhwnlcy5pr96qrkm88pr95h" target="_blank">kaspa:qzhz367wzfrvcaqr75acqd0ya3kgpvpgx4r6dkrhwnlcy5pr96qrkm88pr95h</a></li>
-        <li>💰<strong>Minting Royalties:</strong> 5.39 KAS from minting royalties go back to the community, with more as minting increases!</li>
-    <li>Donations can be sent to the address above and you will be listed here and on our social channels :)</li>
-    <li>All donations go directly back into KasX Launch project for further development as needed by community voting only.</li>
-    </section>
     <!-- Placeholder for footer -->
     <div id="footer-placeholder"></div>
 
     <!-- Include the external JavaScript file -->
     <script src="scripts/load-header-footer.js"></script>
 
-    <!-- Mailchimp validation script -->
-    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-    <script type="text/javascript">
-        (function($) {
-            window.fnames = new Array();
-            window.ftypes = new Array();
-            fnames[0]='EMAIL';ftypes[0]='email';
-        }(jQuery));
-        var $mcj = jQuery.noConflict(true);
-    </script>
+    <!-- Include the KAS Gas JavaScript file -->
+    <script src="scripts/kasgas.js"></script>
+
+   <!-- Wallet Connect Popup and Logic -->
+<script>
+    // Open the wallet popup
+    function openWalletPopup() {
+        document.getElementById('walletPopup').style.display = 'block';
+    }
+
+    // Close the wallet popup
+    function closeWalletPopup() {
+        document.getElementById('walletPopup').style.display = 'none';
+    }
+
+    // Connect to Kasware Wallet (placeholder function)
+    function connectKaswareWallet() {
+        // Example function - Replace with actual Kasware wallet connect logic
+        alert('Connecting to Kasware Wallet...');
+        closeWalletPopup();  // Close the popup after selecting wallet
+        // Add actual Kasware API integration here.
+    }
+</script>
 </body>
 </html>
