@@ -860,30 +860,35 @@
 
       // section menu active
       function onScroll(event) {
-        const sections = document.querySelectorAll(".scroll-menu");
-        const scrollPos =
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          document.body.scrollTop;
+  const sections = document.querySelectorAll(".scroll-menu");
+  const scrollPos =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
 
-        for (let i = 0; i < sections.length; i++) {
-          const currLink = sections[i];
-          const val = currLink.getAttribute("href");
-          const refElement = document.querySelector(val);
-          const scrollTopMinus = scrollPos + 73;
-          if (
-            refElement.offsetTop <= scrollTopMinus &&
-            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-          ) {
-            document
-              .querySelector(".scroll-menu")
-              .classList.remove("dark:text-white", "text-primary");
-            currLink.classList.add("dark:text-white", "text-primary");
-          } else {
-            currLink.classList.remove("dark:text-white", "text-primary");
-          }
-        }
+  for (let i = 0; i < sections.length; i++) {
+    const currLink = sections[i];
+    const val = currLink.getAttribute("href");
+    const refElement = document.querySelector(val);
+
+    // Check if refElement exists
+    if (refElement) {
+      const scrollTopMinus = scrollPos + 73;
+      if (
+        refElement.offsetTop <= scrollTopMinus &&
+        refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+      ) {
+        document
+          .querySelector(".scroll-menu")
+          .classList.remove("dark:text-white", "text-primary");
+        currLink.classList.add("dark:text-white", "text-primary");
+      } else {
+        currLink.classList.remove("dark:text-white", "text-primary");
       }
+    }
+  }
+}
+
 
       window.document.addEventListener("scroll", onScroll);
     </script>
