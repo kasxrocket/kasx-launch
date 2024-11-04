@@ -486,12 +486,12 @@
       </div>
 
       <div
-        class="absolute top-0 left-0 -z-10 h-full w-full opacity-20"
+        class="absolute top-0 left-0 -z-10 h-full w-full opacity-90"
         style="
           background-image: linear-gradient(
             180deg,
-            #3e7dff 0%,
-            rgba(62, 125, 255, 0) 100%
+            #151521 0%,
+            rgba(10, 12, 16, 0) 100%
           );
         "
       ></div>
@@ -532,8 +532,8 @@
               <p
                 class="mb-10 text-base font-medium text-body-color-2 dark:text-body-color"
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                vitae quam nec ante fringilla vel at erat convallis elit.
+              "The early bird gets the worm, but the second mouse gets the cheese...
+              and the tech startup gets the patent!"
               </p>
               <div class="flex items-center space-x-3">
                 <a
@@ -806,14 +806,14 @@
           <p
             class="text-base font-medium leading-loose text-body-color-2 dark:text-body-color"
           >
-            © Crypto - all Rights Reserved, Crafted by
+            © 2024 KasX Community - all Rights Reserved, Made with lots of love and coffee, Powered by
             <a
-              href="https://uideck.com"
+              href="https://kaspa.org"
               rel="noopenner nofollow"
               target="_blank"
               class="hover:text-primary"
             >
-              UIdeck
+              Kaspa.org
             </a>
           </p>
         </div>
@@ -869,9 +869,13 @@
   for (let i = 0; i < sections.length; i++) {
     const currLink = sections[i];
     const val = currLink.getAttribute("href");
+
+    // Skip if href value is empty or doesn't start with #
+    if (!val || !val.startsWith("#")) continue;
+
     const refElement = document.querySelector(val);
 
-    // Check if refElement exists
+    // Only proceed if refElement exists
     if (refElement) {
       const scrollTopMinus = scrollPos + 73;
       if (
@@ -879,8 +883,8 @@
         refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
       ) {
         document
-          .querySelector(".scroll-menu")
-          .classList.remove("dark:text-white", "text-primary");
+          .querySelectorAll(".scroll-menu")
+          .forEach((el) => el.classList.remove("dark:text-white", "text-primary"));
         currLink.classList.add("dark:text-white", "text-primary");
       } else {
         currLink.classList.remove("dark:text-white", "text-primary");
@@ -889,8 +893,7 @@
   }
 }
 
-
-      window.document.addEventListener("scroll", onScroll);
+window.document.addEventListener("scroll", onScroll);
     </script>
   </body>
 </html>
