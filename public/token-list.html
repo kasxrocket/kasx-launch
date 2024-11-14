@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRC-20 Tokens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .token-list {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .token-row, .token-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            padding: 8px;
+            font-size: 0.9em;
+        }
+        .token-header {
+            font-weight: bold;
+            border-bottom: 2px solid #0073e6;
+        }
+        .token-row {
+            border-bottom: 1px solid #ddd;
+        }
+        .button-group a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #0073e6;
+            padding: 5px 8px;
+            margin: 2px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px;
+        }
+        .pagination span {
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 1.1em;
+            color: #0073e6;
+        }
+        .pagination span:hover {
+            color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="token-list" id="tokenList">
+    <!-- Tokens will be listed here -->
+</div>
+
+<div class="pagination" id="pagination">
+    <!-- Page numbers will be generated here -->
+</div>
+
+<script>
+    const tokenApiUrl = 'https://tn10api.kasplex.org/v1/krc20/tokenlist';
+    let tokensPerPage = 10;
+    let currentPage = 1;
+    let allTokens = [];
+    let sortOrder = { column: null, ascending: true };
+
+    async function fetchAllTokens(url) {
+        let nextPageUrl = url;
+        try {
+            while (nextPageUrl) {
+                const response = await fetch(nextPageUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                if (data && data.result && data.result.length > 0) {
+                    allTokens = allTokens.concat(data.result);
+                    nextPageUrl = data.next ? `${tokenApiUrl}?next=${data.next}` : null;
+                } else {
+                    nextPageUrl = null;
+                }
+            }
+            if (allTokens.length > 0) {
+                await fetchAdditionalTokenData();
+                displayPage(currentPage);
+                setupPagination();
+            } else {
+                document.getElementById('tokenList').innerHTML = "<p>No tokens found.</p>";
+            }
+        } catch (error) {
+            console.error('Error fetching tokens:', error);
+            document.getElementById('tokenList').innerHTML = "<p>Error loading tokens. Please try again later.</p>";
+        }
+    }
+
+    async function fetchAdditionalTokenData() {
+        await Promise.all(allTokens.map(async (token) => {
+            try {
+                const response = await fetch(`https://tn10api.kasplex.org/v1/krc20/token/${token.tick}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    token.maxSupply = data.max_supply || 'N/A';
+                    token.circulatingSupply = data.circulating_supply || 'N/A';
+                } else {
+                    token.maxSupply = 'N/A';
+                    token.circulatingSupply = 'N/A';
+                }
+            } catch (error) {
+                console.error(`Error fetching data for ${token.tick}:`, error);
+                token.maxSupply = 'N/A';
+                token.circulatingSupply = 'N/A';
+            }
+        }));
+    }
+
+    function displayPage(page) {
+        const start = (page - 1) * tokensPerPage;
+        const end = start + tokensPerPage;
+        const tokensToShow = allTokens.slice(start, end);
+
+        const tokenList = document.getElementById('tokenList');
+        tokenList.innerHTML = `
+            <div class="token-header">
+                <span onclick="sortTokens('tick')">Ticker</span>
+                <span onclick="sortTokens('maxSupply')">Max Supply</span>
+                <span onclick="sortTokens('circulatingSupply')">Circulating Supply</span>
+                <span>Actions</span>
+            </div>
+        ` + tokensToShow.map(token => `
+            <div class="token-row">
+                <span>${token.tick || 'N/A'}</span>
+                <span>${token.maxSupply !== 'N/A' ? parseInt(token.maxSupply).toLocaleString() : 'N/A'}</span>
+                <span>${token.circulatingSupply !== 'N/A' ? parseInt(token.circulatingSupply).toLocaleString() : 'N/A'}</span>
+                <span class="button-group">
+                    <a href="#mint/${token.tick}" target="_blank">Mint</a>
+                    <a href="#sell/${token.tick}" target="_blank">Sell</a>
+                    <a href="#buy/${token.tick}" target="_blank">Buy</a>
+                </span>
+            </div>
+        `).join('');
+    }
+
+    function setupPagination() {
+        const pageCount = Math.ceil(allTokens.length / tokensPerPage);
+        const paginationDiv = document.getElementById('pagination');
+        paginationDiv.innerHTML = '';
+
+        for (let i = 1; i <= pageCount; i++) {
+            const pageNumber = document.createElement('span');
+            pageNumber.classList.add('page-number');
+            pageNumber.innerText = i;
+            pageNumber.addEventListener('click', () => {
+                currentPage = i;
+                displayPage(currentPage);
+            });
+            paginationDiv.appendChild(pageNumber);
+        }
+
+        const nextPage = document.createElement('span');
+        nextPage.classList.add('next-page');
+        nextPage.innerText = 'Next';
+        nextPage.addEventListener('click', () => {
+            if (currentPage < pageCount) {
+                currentPage += 1;
+                displayPage(currentPage);
+            }
+        });
+        paginationDiv.appendChild(nextPage);
+    }
+
+    function sortTokens(column) {
+        if (sortOrder.column === column) {
+            sortOrder.ascending = !sortOrder.ascending;
+        } else {
+            sortOrder.column = column;
+            sortOrder.ascending = true;
+        }
+
+        allTokens.sort((a, b) => {
+            const aValue = a[column] || 0;
+            const bValue = b[column] || 0;
+            return aValue > bValue ? (sortOrder.ascending ? 1 : -1) : (sortOrder.ascending ? -1 : 1);
+        });
+
+        displayPage(currentPage);
+    }
+
+    // Initial data fetch and display
+    fetchAllTokens(tokenApiUrl);
+</script>
+
+</body>
+</html>

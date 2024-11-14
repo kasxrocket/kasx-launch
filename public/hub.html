@@ -3,41 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KRC20 Hub</title>
-  <style>
-    /* Basic styling for sections */
-    .section { margin-bottom: 20px; padding: 10px; border: 1px solid #ddd; }
-  </style>
+  <title>Kaspa Wallet Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-  <h1>KRC20 Hub</h1>
+  <div class="container mx-auto my-10">
+    <h1 class="text-2xl font-bold mb-5">Kaspa Wallet Dashboard</h1>
 
-  <div class="section" id="trade-stats">
-    <h2>Trade Statistics</h2>
-    <p id="trade-stats-data">Loading...</p>
+    <table class="min-w-full bg-white rounded shadow-md">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">Functionality</th>
+          <th class="py-2 px-4 border-b">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Wallet Connect -->
+        <tr>
+          <td class="py-4 px-6 border-b">Wallet Connect</td>
+          <td class="py-4 px-6 border-b">
+            <input type="text" id="walletAddress" placeholder="Enter Wallet Address" class="border p-2 rounded w-full mb-2">
+            <button id="connectWallet" class="bg-blue-500 text-white px-4 py-2 rounded">Connect Wallet</button>
+            <p id="walletStatus" class="text-sm mt-2"></p>
+          </td>
+        </tr>
+
+        <!-- Balance View -->
+        <tr>
+          <td class="py-4 px-6 border-b">Balance View</td>
+          <td class="py-4 px-6 border-b">
+            <p id="balance" class="text-sm mt-2">Balance: N/A</p>
+          </td>
+        </tr>
+
+        <!-- Mint Token -->
+        <tr>
+          <td class="py-4 px-6 border-b">Mint Token</td>
+          <td class="py-4 px-6 border-b">
+            <button id="mintToken" class="bg-purple-500 text-white px-4 py-2 rounded">Mint Token</button>
+          </td>
+        </tr>
+
+        <!-- Buy Token -->
+        <tr>
+          <td class="py-4 px-6 border-b">Buy Token</td>
+          <td class="py-4 px-6 border-b">
+            <input type="number" id="buyAmount" placeholder="Amount" class="border p-2 rounded">
+            <button id="buyToken" class="bg-yellow-500 text-white px-4 py-2 rounded ml-2">Buy</button>
+          </td>
+        </tr>
+
+        <!-- Sell Token -->
+        <tr>
+          <td class="py-4 px-6 border-b">Sell Token</td>
+          <td class="py-4 px-6 border-b">
+            <input type="number" id="sellAmount" placeholder="Amount" class="border p-2 rounded">
+            <button id="sellToken" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Sell</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="section" id="floor-price-data">
-    <h2>Floor Prices</h2>
-    <p id="floor-price-data">Loading...</p>
-  </div>
+  <script>
+    async function connectWallet() {
+      const walletAddress = document.getElementById("walletAddress").value.trim();
+      const statusElement = document.getElementById("walletStatus");
 
-  <div class="section" id="sold-orders">
-    <h2>Fulfilled Orders (Last Minute)</h2>
-    <p id="sold-orders-data">Loading...</p>
-  </div>
+      if (!walletAddress) {
+        statusElement.textContent = "Please enter a wallet address.";
+        statusElement.style.color = "red";
+        return;
+      }
 
-  <div class="section" id="hot-mints">
-    <h2>Hot Mints (Top 5 Fastest)</h2>
-    <p id="hot-mints-data">Loading...</p>
-  </div>
+      try {
+        // Connect to the KasWare wallet API
+        const response = await fetch("https://api.kasplex.org/v1/connect", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ walletAddress })
+        });
+        const result = await response.json();
 
-  <div class="section" id="open-orders">
-    <h2>Open Orders for Sale</h2>
-    <p id="open-orders-data">Loading...</p>
-  </div>
+        if (result.success) {
+          statusElement.textContent = "Wallet connected successfully!";
+          statusElement.style.color = "green";
 
-  <script src="./scripts/hub.js"></script>
+          // Retrieve and display the balance
+          const balanceResponse = await fetch(`https://api.kasplex.org/v1/balance/${walletAddress}`);
+          const balanceData = await balanceResponse.json();
+          document.getElementById("balance").textContent = `Balance: ${balanceData.balance} KAS`;
+        } else {
+          throw new Error(result.message || "Failed to connect wallet");
+        }
+      } catch (error) {
+        statusElement.textContent = `Error: ${error.message}`;
+        statusElement.style.color = "red";
+      }
+    }
+
+    async function mintToken() {
+      alert("Mint Token functionality coming soon.");
+    }
+
+    async function buyToken() {
+      const amount = document.getElementById("buyAmount").value;
+      alert(`Buy Token functionality coming soon for amount ${amount}.`);
+    }
+
+    async function sellToken() {
+      const amount = document.getElementById("sellAmount").value;
+      alert(`Sell Token functionality coming soon for amount ${amount}.`);
+    }
+
+    document.getElementById("connectWallet").addEventListener("click", connectWallet);
+    document.getElementById("mintToken").addEventListener("click", mintToken);
+    document.getElementById("buyToken").addEventListener("click", buyToken);
+    document.getElementById("sellToken").addEventListener("click", sellToken);
+  </script>
+
 </body>
 </html>

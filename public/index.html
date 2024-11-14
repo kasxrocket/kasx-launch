@@ -16,7 +16,6 @@
 
     <script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
     <gecko-coin-price-marquee-widget locale="en" dark-mode="true" coin-ids="kaspa,nacho-the-kat,kasper,kaspy,kaspaw,kango,dogk,ghoad,burt,pepe-krc20,keke" initial-currency="usd"></gecko-coin-price-marquee-widget>
-    <h2>Top 10 Hottest KRC20 Tokens</h2>
             <div class="hot-mints-container" id="tokens-container">
                 <!-- Tokens will be injected here -->
             </div>
@@ -57,55 +56,80 @@
         </div>
     </section>
 
-    <!-- Roadmap Section -->
     <section class="roadmap" id="roadmap">
         <h2>KasX Roadmap</h2>
-        <p>Follow KasX’s journey in building a fully decentralized and community-driven KRC20 token swap platform. Stay up-to-date with our progress.</p>
+        <p>Join us on our ambitious journey to redefine decentralized finance with KasX, the community-driven KRC20 token swap platform. Here’s what’s ahead:</p>
         <div class="roadmap-details">
-            <div>
-                <h3>Q3 2024</h3>
-                <ul>
-                    <li><img src="images/tick-icon.png" alt="tick"> KASX Token Deployment</li>
-                    <li><img src="images/tick-icon.png" alt="tick"> KasX Launch GitHub Project</li>
-                    <li><img src="images/tick-icon.png" alt="tick"> Domain Name kasx.io Registered</li>
-                    <li><img src="images/tick-icon.png" alt="tick"> Website Development Started</li>
-                </ul>
-            </div>
             <div>
                 <h3>Q4 2024</h3>
                 <ul>
-                    <li><img src="images/tick-icon.png" alt="tick"> Website Launch</li>
-                    <li><img src="images/tick-icon.png" alt="tick"> Community Socials Created (Discord, Twitter & X)</li>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> Invite Community Members to Help Design & Build</li>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> Beta Testing of KasX Swap for KRC20 Tokens</li>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> CEX Listing/s</li>
+                    <li><img src="images/tick-icon.png" alt="tick"> Official Website Launch</li>
+                    <li><img src="images/tick-icon.png" alt="tick"> Community Channels Opened (Discord, Twitter, X)</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> Community Collaboration Begins</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> KasX Swap Beta Testing for KRC20 Tokens</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> Initial CEX Listings</li>
                 </ul>
             </div>
             <div>
-                <h3>Q1 2025</h3>
+                <h3>Q1/Q2 2025</h3>
                 <ul>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> Development of Mobile App for Android</li>
-                    <li><img src="images/rocket-icon.png" alt="rocket"> More CEX Listing/s</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> Launch of KasX Mobile App for Android</li>
+                    <li><img src="images/rocket-icon.png" alt="rocket"> Expansion to Additional CEX Platforms</li>
                 </ul>
             </div>
         </div>
         <div class="roadmap-invite">
-            <h3>Are you a Developer? Join the KasX Journey!</h3>
-            <p>KasX invites developers and community members to contribute by designing, building, or minting KASX tokens. Let’s shape decentralized finance together!</p>
+            <h3>Calling All Developers – Join the KasX Movement!</h3>
+            <p>KasX is building a future of decentralized finance, and we want you on board. Contribute by developing, designing, or minting KASX tokens. Let’s innovate together!</p>
             <div class="invite-buttons">
                 <a href="https://github.com/kasxrocket/kasx-launch" class="btn">GitHub Developers</a>
                 <a href="https://t.me/kspr_home_bot?start=WdRcvw" class="btn">Mint Using KSPR Bot!</a>
             </div>
         </div>
     </section>
+    
 
     <!-- Placeholder for footer -->
     <div id="footer-placeholder"></div>
 
     <!-- Include the external JavaScript files -->
     <script src="./scripts/load-header-footer.js"></script>
-    <script src="./scripts/connect-wallet.js"></script>
-    <script src="./scripts/hot-mints.js"></script>
+    <script src="./includes/scripts/kasware-connect.js"></script>
+    <script src="./includes/scripts/hot-mints.js"></script>
+
+    <script>
+        async function getCurrentFee() {
+            try {
+                const response = await fetch("http://api.kasx.io/getBlockTemplate");
+                const data = await response.json();
+    
+                // Extract transaction fees from the block template
+                const fees = data.transactions.map(tx => tx.fee);
+    
+                // Calculate the median fee
+                const medianFee = calculateMedian(fees);
+    
+                // Display the fee
+                document.getElementById('fee').innerText = `${medianFee} KAS`;
+            } catch (error) {
+                console.error("Error fetching the current fee:", error);
+                document.getElementById('fee').innerText = "Error loading fee";
+            }
+        }
+    
+        function calculateMedian(fees) {
+            if (fees.length === 0) return 0;
+            const sorted = fees.sort((a, b) => a - b);
+            const middle = Math.floor(sorted.length / 2);
+    
+            return sorted.length % 2 === 0
+                ? (sorted[middle - 1] + sorted[middle]) / 2
+                : sorted[middle];
+        }
+    
+        // Fetch and display the current fee on load
+        getCurrentFee();
+    </script>
 
 </body>
 </html>

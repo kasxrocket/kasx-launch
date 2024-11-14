@@ -10,36 +10,48 @@
                     <a href="#">KasX</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#hub">Hub</a>
-                    <ul class="dropdown-content">
-                        <li><a href="#hub" target="_blank">Beta</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="https://kas.fyi/krc20-tokens">Token List</a>
-                    <ul class="dropdown-content">
-                        <li><a href="https://kas.fyi/krc20-tokens" target="_blank">Token List</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
                     <a href="https://kasx.io/docs/whitepaper.pdf" target="_blank">Docs</a>
                     <ul class="dropdown-content">
                         <li><a href="https://kasx.io/docs/whitepaper.pdf" target="_blank">White Paper</a></li>
                         <li><a href="https://github.com/kasxrocket/kasx-launch" target="_blank">Github Launch</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="https://x.com/kasx_io" target="_blank">Community</a>
-                    <ul class="dropdown-content">
-                        <li><a href="https://t.me/kasx_io" target="_blank">Telegram</a></li>
-                        <li><a href="https://x.com/kasx_io" target="_blank">X</a></li>
-                        <li><a href="https://discord.gg/zHnYqfdB" target="_blank">Discord</a></li>
-                    </ul>
-                </li>
-            </ul>
             </nav>
+            <div class="social-icons">
+                <a href="https://x.com/kasx_io" target="_blank" rel="noopener noreferrer"><img src="images/x-icon.png" alt="Follow KasX on X.com"></a>
+                <a href="https://github.com/kasxrocket/kasx-launch" target="_blank" rel="noopener noreferrer"><img src="images/github-icon.png" alt="Contribute to KasX on GitHub"></a>
+                <a href="https://t.me/kasx_io" target="_blank" rel="noopener noreferrer"><img src="images/telegram-icon.png" alt="Join KasX on Telegram"></a>
+            </div>
             <div class="fee-container">
-                <p id="fee-display"><span style='font-size:20px;'>&#128722;</span> 0.000042<img src="images/kaspa-icon-32x32.png" alt="𐤊AS"></p>
+                <p id="fee-estimate">...</p>
+                <!-- JavaScript to fetch and display the fee estimate -->
+  <script>
+    // Define the API endpoint
+    const url = "https://api.kasx.io/info/fee-estimate";
+
+    // Make the GET request
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Fee Estimate:", data);
+        // Display the fee estimate data inside the <p> element
+        document.getElementById("fee-estimate").innerText = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        console.error("Error fetching fee estimate:", error);
+        // Show error message in the <p> element if there is an error
+        document.getElementById("fee-estimate").innerText = "Error loading fee estimate.";
+      });
+  </script>
+  <script src="./scripts/kas-fee.js"></script>
+            </div>
+            <div class="fee-container">
+                <p id="fee-display">&#9981; 0<img src="images/kaspa-icon-32x32.png" alt="𐤊AS"></p>
               </div>
 <!-- Wallet Connect Button -->
 <div class="wallet-connect">
@@ -54,13 +66,13 @@
         <div class="wallet-options">
             <!-- Kasware Wallet Option -->
             <div class="wallet-option" onclick="connectKaswareWallet()">
-                <img src="images/wallet-connect-kasware.png" alt="Kasware Wallet" class="wallet-icon">
+                <img src="./images/wallet-connect-kasware.png" alt="Kasware Wallet" class="wallet-icon">
                 <p>Kasware Wallet - beta</p>
             </div>
-               <!-- Tangem Wallet Option -->
+               <!-- Ghost Wallet Option -->
                <div class="wallet-option" onclick="connecttangemWallet()">
-                <img src="images/wallet-connect-tangem.png" alt="tangem Wallet" class="wallet-icon">
-                <p>Tangem Wallet - soon</p>
+                <img src="./images/wallet-connect-tangem.png" alt="tangem Wallet" class="wallet-icon">
+                <p>Ghost Wallet - soon</p>
             </div>
             <!-- Add more wallet options here as needed -->
         </div>
@@ -71,7 +83,7 @@
     <div id="header-placeholder"></div>
     <div class="minting-progress-container">
         <div class="minting-progress-bar" id="minting-bar">
-            <span class="minted-info"><span> KASX Mints = 7007<img src="images/kaspa-icon-32x32.png" alt="KAS"><a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now &#9935;</a></span>
+            <span class="minted-info"><span> KASX Mint = 0.03% Minted | 7007/185,185,185<img src="images/kaspa-icon-32x32.png" alt="KAS"> | <a href="https://t.me/kspr_home_bot?start=WdRcvw" target="_blank" class="mint-now-header">Mint Now &#9935;</a> | <a href="https://kaspiano.com" target="_blank" class="mint-now-header">Buy on Market &#x1F6D2;</a> |</span>
             </span>
             <div class="progress-bar">
                 <div class="progress" style="width: 2%;"></div>

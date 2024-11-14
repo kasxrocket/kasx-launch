@@ -275,8 +275,8 @@ input:checked + .slider:before {
 }
 
 .social-icons img {
-    width: 100px;   /* Increase the size of the circle */
-    height: 100px;  /* Increase the height of the circle */
+    width: 42px;   /* Increase the size of the circle */
+    height: 42px;  /* Increase the height of the circle */
     border-radius: 20%;  /* Keep the circular frame */
     object-fit: cover;  /* Make sure the image fills the circle */
     object-position: center;  /* Center the image within the circle */
@@ -416,7 +416,7 @@ input:checked + .slider:before {
 
 /* Token Styles */
 .token-details {
-    background-color: #1f2937;
+    background-color: #0a0c10;
     color: white;
     padding: 10px;
     margin: 20px;
@@ -496,7 +496,7 @@ input:checked + .slider:before {
 }
 
 .minting-progress-bar {
-    max-width: 400px;
+    max-width: 777px;
     margin: auto;
 }
 
@@ -772,7 +772,7 @@ input:checked + .slider:before {
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #292826;
+    background-color: #0a0c10;
     color: #333;
 }
 
@@ -989,7 +989,7 @@ p {
     padding: 5px;
     border: 1px solid #ddd; /* Optional: add border */
     border-radius: 5px; /* Optional: rounded corners */
-    background-color: #1f2937; /* Dark background */
+    background-color: #0a0c10; /* Dark background */
     color: #fff; /* White text */
 }
 
@@ -1015,7 +1015,7 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     width: 20px;
     height: 20px;
-    background-color: #1f2937; /* Background color of the button */
+    background-color: #0a0c10; /* Background color of the button */
     color: white; /* Arrow color */
 }
 
