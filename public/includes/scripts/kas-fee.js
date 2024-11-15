@@ -1,5 +1,5 @@
 // Define the API endpoint
-const url = "https://api.kasx.io/info/fee-estimate";
+const url = "https://api.kaspa.org/info/fee-estimate";
 
 // Make the GET request
 fetch(url)
