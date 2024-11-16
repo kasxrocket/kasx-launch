@@ -1,9 +1,8 @@
 {
-  "name": "crypto-tailwind",
+  "name": "Crypto Tailwind",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module", // Enables ES Modules
   "scripts": {
     "start": "webpack serve --open --config webpack.config.js",
     "build": "webpack --config webpack.config.js"
