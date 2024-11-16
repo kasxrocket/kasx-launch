@@ -1,7 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
-  // Extract endpoint and parameters from the query string
+export const handler = async (event) => {
   const endpoint = event.queryStringParameters.endpoint || '';
   const params = event.queryStringParameters || {};
 
