@@ -35,6 +35,7 @@
     "@kaspa/wallet": "^1.4.26",
     "alpinejs": "^3.10.3",
     "apexcharts": "^3.36.3",
+    "node-fetch": "^3.0.0",
     "wowjs": "^1.1.3"
   }
 }
