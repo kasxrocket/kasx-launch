@@ -1,16 +1,14 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
   const endpoint = event.queryStringParameters.endpoint || '';
   const params = event.queryStringParameters || {};
 
-  // Construct the Kaspiano API URL
   const BASE_URL = 'https://api.kaspiano.com/api';
   const queryString = new URLSearchParams(params).toString();
   const url = `${BASE_URL}${endpoint ? `/${endpoint}` : ''}?${queryString}`;
 
   try {
-    // Make the API request
     const response = await fetch(url);
     const data = await response.json();
 
@@ -19,7 +17,6 @@ export const handler = async (event) => {
       body: JSON.stringify(data),
     };
   } catch (error) {
-    // Handle any errors
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
