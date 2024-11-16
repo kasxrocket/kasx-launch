@@ -9,7 +9,7 @@ function displayResult(endpoint, result) {
 
 // Function to test an API endpoint via the Netlify Function
 async function testApi(endpoint, params = {}) {
-  const url = new URL(BASE_URL);
+  const url = new URL(`${window.location.origin}${BASE_URL}`);
   url.searchParams.append('endpoint', endpoint);
   Object.keys(params).forEach((key) => url.searchParams.append(key, params[key]));
 
