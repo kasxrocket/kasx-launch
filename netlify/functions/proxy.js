@@ -1,20 +1,17 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 exports.handler = async (event) => {
   const endpoint = event.queryStringParameters.endpoint || '';
   const params = event.queryStringParameters || {};
 
   const BASE_URL = 'https://api.kaspiano.com/api';
-  const queryString = new URLSearchParams(params).toString();
-  const url = `${BASE_URL}${endpoint ? `/${endpoint}` : ''}?${queryString}`;
+  const url = `${BASE_URL}${endpoint ? `/${endpoint}` : ''}`;
 
   try {
-    const response = await fetch(url);
-    const data = await response.json();
-
+    const response = await axios.get(url, { params });
     return {
       statusCode: response.status,
-      body: JSON.stringify(data),
+      body: JSON.stringify(response.data),
     };
   } catch (error) {
     return {
@@ -23,3 +20,4 @@ exports.handler = async (event) => {
     };
   }
 };
+
